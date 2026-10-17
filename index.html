@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Capital & Shelter · 10-Year Rent vs. Buy Simulator</title>
+    <meta name="description" content="Should you rent or buy? Model ten years of mortgage amortization, service charges, tax shields, rent escalation and the opportunity cost of your down payment, month by month." />
+    <meta property="og:title" content="Capital & Shelter · 10-Year Rent vs. Buy Simulator" />
+    <meta property="og:description" content="A 120-month engine that compares the net worth of renting vs. buying a home." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#F8F7F4" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/index.css" />
+  </head>
+  <body class="bg-[#F8F7F4] text-stone-900 antialiased" style="font-family: 'Inter', system-ui, -apple-system, sans-serif">
+    <!-- NAV -->
+    <header class="sticky top-0 z-30 bg-[#F8F7F4]/90 backdrop-blur-md border-b border-stone-200/80">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2.5">
+          <img src="/favicon.svg" alt="" class="w-8 h-8" />
+          <span class="font-serif-display text-lg font-bold tracking-tight">Capital &amp; Shelter</span>
+        </a>
+        <nav class="flex items-center gap-1 sm:gap-6 text-sm">
+          <a href="#models" class="hidden sm:inline text-stone-600 hover:text-stone-900">What it models</a>
+          <a href="#scenarios" class="hidden sm:inline text-stone-600 hover:text-stone-900">Scenarios</a>
+          <a href="/simulator" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-teal-800 text-white font-medium hover:bg-teal-700 transition-colors">
+            Open simulator
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 sm:pt-20 pb-16 grid lg:grid-cols-[1.05fr_1fr] gap-12 items-center">
+        <div>
+          <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-mono font-medium bg-teal-50 text-teal-800 border border-teal-200">
+            120-month engine · runs in your browser
+          </span>
+          <h1 class="mt-5 font-serif-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05]">
+            Rent or buy?<br />
+            <span class="italic text-teal-800">Run the decade first.</span>
+          </h1>
+          <p class="mt-6 text-lg text-stone-600 max-w-xl leading-relaxed">
+            A home is the biggest purchase most people make, and it's usually judged on monthly payment alone.
+            This simulator follows both paths month by month for ten years and shows which one leaves you with more net worth.
+          </p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-3">
+            <a href="/simulator" class="inline-flex justify-center items-center gap-2 px-6 py-3.5 rounded-xl bg-teal-800 text-white font-semibold shadow-sm hover:bg-teal-700 transition-colors">
+              Start simulating
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#how" class="inline-flex justify-center items-center px-6 py-3.5 rounded-xl border border-stone-300 bg-white text-stone-800 font-medium hover:border-stone-400 transition-colors">
+              How it works
+            </a>
+          </div>
+          <p class="mt-4 text-xs text-stone-500">Free · No sign-up · Nothing you enter leaves your device</p>
+        </div>
+
+        <!-- Illustrative chart card -->
+        <figure class="bg-white rounded-2xl border border-stone-200 shadow-sm p-5 sm:p-6">
+          <div class="flex items-center justify-between gap-3">
+            <figcaption class="text-sm font-semibold text-stone-800">Net worth over 10 years</figcaption>
+            <span class="text-[10px] font-mono uppercase tracking-wider text-stone-400">Illustrative</span>
+          </div>
+          <div class="mt-3 flex gap-4 text-xs text-stone-600">
+            <span class="inline-flex items-center gap-1.5"><span class="w-3 h-0.5 bg-teal-700 rounded"></span>Buy</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-3 h-0.5 bg-orange-600 rounded"></span>Rent &amp; invest</span>
+          </div>
+          <svg viewBox="0 0 400 220" class="mt-3 w-full h-auto" role="img" aria-label="Illustrative chart: two net-worth curves that cross partway through the decade">
+            <g stroke="#e7e5e4" stroke-width="1">
+              <line x1="30" y1="30" x2="390" y2="30" />
+              <line x1="30" y1="80" x2="390" y2="80" />
+              <line x1="30" y1="130" x2="390" y2="130" />
+              <line x1="30" y1="180" x2="390" y2="180" />
+            </g>
+            <path d="M30 175 C 110 168, 170 140, 230 105 S 340 45, 390 30 L 390 180 L 30 180 Z" fill="#0f766e" fill-opacity="0.07" />
+            <path d="M30 175 C 110 168, 170 140, 230 105 S 340 45, 390 30" fill="none" stroke="#0f766e" stroke-width="2.5" stroke-linecap="round" />
+            <path d="M30 150 C 100 140, 170 122, 230 108 S 340 78, 390 64" fill="none" stroke="#ea580c" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="6 4" />
+            <circle cx="226" cy="107" r="5" fill="#fff" stroke="#1c1917" stroke-width="2" />
+            <text x="236" y="128" font-size="11" fill="#57534e" font-family="JetBrains Mono, monospace">break-even</text>
+            <g font-size="10" fill="#a8a29e" font-family="JetBrains Mono, monospace">
+              <text x="30" y="200">Yr 0</text>
+              <text x="200" y="200">Yr 5</text>
+              <text x="364" y="200">Yr 10</text>
+            </g>
+          </svg>
+          <p class="mt-2 text-xs text-stone-500 leading-relaxed">
+            Buying often starts behind (down payment, closing costs) and may or may not catch up. The simulator finds the crossover for your numbers.
+          </p>
+        </figure>
+      </section>
+
+      <!-- WHAT IT MODELS -->
+      <section id="models" class="border-y border-stone-200 bg-white/60">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+          <h2 class="font-serif-display text-3xl sm:text-4xl font-bold tracking-tight">What the model accounts for</h2>
+          <p class="mt-3 text-stone-600 max-w-2xl">The costs that rent-vs-buy calculators usually leave out are where the answer often flips.</p>
+          <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <article class="rounded-xl border border-stone-200 bg-white p-5">
+              <h3 class="font-semibold">Mortgage amortization</h3>
+              <p class="mt-2 text-sm text-stone-600 leading-relaxed">Every payment is split into interest and principal, month by month, so equity builds the way it really does.</p>
+            </article>
+            <article class="rounded-xl border border-stone-200 bg-white p-5">
+              <h3 class="font-semibold">Service charges &amp; property tax</h3>
+              <p class="mt-2 text-sm text-stone-600 leading-relaxed">HOA or service fees with their own escalation rate, plus annual property tax on the home's value.</p>
+            </article>
+            <article class="rounded-xl border border-stone-200 bg-white p-5">
+              <h3 class="font-semibold">Marginal tax shields</h3>
+              <p class="mt-2 text-sm text-stone-600 leading-relaxed">Optional deductions for mortgage interest and property tax at your marginal bracket.</p>
+            </article>
+            <article class="rounded-xl border border-stone-200 bg-white p-5">
+              <h3 class="font-semibold">Rent escalation</h3>
+              <p class="mt-2 text-sm text-stone-600 leading-relaxed">Rent grows every year at a rate you set, so the renter's cost isn't frozen at today's price.</p>
+            </article>
+            <article class="rounded-xl border border-stone-200 bg-white p-5">
+              <h3 class="font-semibold">Opportunity cost of capital</h3>
+              <p class="mt-2 text-sm text-stone-600 leading-relaxed">The renter invests the down payment and any monthly savings at your expected market return.</p>
+            </article>
+            <article class="rounded-xl border border-stone-200 bg-white p-5">
+              <h3 class="font-semibold">Transaction costs</h3>
+              <p class="mt-2 text-sm text-stone-600 leading-relaxed">Toggle buying closing costs and selling costs to see what it takes to actually exit at year ten.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENARIOS -->
+      <section id="scenarios" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <h2 class="font-serif-display text-3xl sm:text-4xl font-bold tracking-tight">Start from a preset market</h2>
+        <p class="mt-3 text-stone-600 max-w-2xl">Each preset loads a full set of assumptions. Change any slider to make it yours.</p>
+        <div class="mt-10 grid md:grid-cols-3 gap-5">
+          <article class="rounded-2xl border border-stone-200 bg-white p-6">
+            <span class="inline-flex px-2 py-0.5 rounded-full text-[11px] font-mono font-medium bg-stone-100 text-stone-700 border border-stone-200">Balanced</span>
+            <h3 class="mt-4 font-serif-display text-xl font-bold">Baseline Metro Market</h3>
+            <p class="mt-2 text-sm text-stone-600 leading-relaxed">Typical urban/suburban benchmark with moderate appreciation and rent growth.</p>
+          </article>
+          <article class="rounded-2xl border border-stone-200 bg-white p-6">
+            <span class="inline-flex px-2 py-0.5 rounded-full text-[11px] font-mono font-medium bg-orange-50 text-orange-800 border border-orange-200">Rent favored</span>
+            <h3 class="mt-4 font-serif-display text-xl font-bold">High-Service Luxury Condo</h3>
+            <p class="mt-2 text-sm text-stone-600 leading-relaxed">High HOA/service charges and elevated interest rates vs. strong equity market returns.</p>
+          </article>
+          <article class="rounded-2xl border border-stone-200 bg-white p-6">
+            <span class="inline-flex px-2 py-0.5 rounded-full text-[11px] font-mono font-medium bg-teal-50 text-teal-800 border border-teal-200">Buy favored</span>
+            <h3 class="mt-4 font-serif-display text-xl font-bold">High-Growth Tech Hub</h3>
+            <p class="mt-2 text-sm text-stone-600 leading-relaxed">Rapid home appreciation and steep annual rent escalation reward early buyers.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section id="how" class="bg-stone-900 text-stone-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+          <h2 class="font-serif-display text-3xl sm:text-4xl font-bold tracking-tight">How it works</h2>
+          <ol class="mt-10 grid md:grid-cols-3 gap-8">
+            <li>
+              <span class="font-mono text-sm text-teal-400">01</span>
+              <h3 class="mt-2 text-lg font-semibold">Set your numbers</h3>
+              <p class="mt-2 text-sm text-stone-400 leading-relaxed">Price, down payment, rate, rent, fees, tax bracket and expected returns, or pick a preset.</p>
+            </li>
+            <li>
+              <span class="font-mono text-sm text-teal-400">02</span>
+              <h3 class="mt-2 text-lg font-semibold">Simulate 120 months</h3>
+              <p class="mt-2 text-sm text-stone-400 leading-relaxed">Both paths are recomputed instantly as you move each slider, month by month.</p>
+            </li>
+            <li>
+              <span class="font-mono text-sm text-teal-400">03</span>
+              <h3 class="mt-2 text-lg font-semibold">Compare and export</h3>
+              <p class="mt-2 text-sm text-stone-400 leading-relaxed">See the net-worth gap, drill into any year, read the methodology and export the schedule to CSV.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center">
+        <h2 class="font-serif-display text-3xl sm:text-5xl font-bold tracking-tight">Make the call with the full picture.</h2>
+        <a href="/simulator" class="mt-8 inline-flex items-center gap-2 px-7 py-4 rounded-xl bg-teal-800 text-white font-semibold shadow-sm hover:bg-teal-700 transition-colors">
+          Open the simulator
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </section>
+    </main>
+
+    <footer class="border-t border-stone-200">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between text-xs text-stone-500">
+        <p>Capital &amp; Shelter · Public-domain software</p>
+        <p class="max-w-xl sm:text-right">For education and planning only, not financial, tax or investment advice. Results depend entirely on the assumptions you enter.</p>
+      </div>
+    </footer>
+  </body>
+</html>
